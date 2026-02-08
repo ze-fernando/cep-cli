@@ -1,7 +1,6 @@
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::io::{self, Write};
-use std::process::Command;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct Response {
@@ -27,7 +26,7 @@ fn get_info(cep: Box<str>) -> Result<(), Box<dyn Error>> {
     let body = res.text()?;
     let data: Response = serde_json::from_str(&body)?;
 
-    Command::new("clear").status().unwrap();
+    println!("");
 
     println!("{}", "=".repeat(22));
     println!("Resultado");
